@@ -15,7 +15,7 @@ function App() {
       <main>
         <MyHero />
         <Routes>
-          <Route path="/details" element={<CityDettails />} />
+          <Route path="/details/:cityId" element={<CityDettails />} />
         </Routes>
       </main>
       <footer>
