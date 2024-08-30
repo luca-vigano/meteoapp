@@ -40,10 +40,7 @@ const CityDettails = () => {
       {isLoading ? (
         "Wait.."
       ) : (
-        <Container
-          fluid
-          className="bg-primary m-0 d-flex justify-content-around"
-        >
+        <Container fluid className="bg-primary m-0">
           <Row>
             <Col>
               <ListGroup>
