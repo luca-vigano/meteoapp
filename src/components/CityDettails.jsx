@@ -7,6 +7,7 @@ const CityDettails = () => {
   const urlParameter = useParams();
   const [meteo, setMeteo] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [MyIcon, setMyIcon] = useState();
 
   useEffect(() => {
     fetchMeteo();
@@ -29,6 +30,11 @@ const CityDettails = () => {
         console.log(cityMeteo);
         setMeteo(cityMeteo);
         setIsLoading(false);
+        setMyIcon(
+          "http://openweathermap.org/img/w/" +
+            cityMeteo.weather[0].icon +
+            ".png"
+        );
       })
       .catch((err) => {
         console.log("ERRORE RECUPERO DATI", err);
