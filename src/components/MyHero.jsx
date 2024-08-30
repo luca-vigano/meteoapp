@@ -8,13 +8,16 @@ const MyHero = () => {
   return (
     <Container
       fluid
-      className="p-0 bg-primary d-flex text-center justify-content-around"
+      className="h-100 p-0 bg-primary d-flex text-center justify-content-around"
     >
       <Row className="justify-content-around mb-4">
         <SearchBar />
         <SearchCard search="milano" />
         <SearchCard search="roma" />
         <SearchCard search="napoli" />
+        <SearchCard search="torino" />
+        <SearchCard search="venezia" />
+        <SearchCard search="palermo" />
       </Row>
     </Container>
   );

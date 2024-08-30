@@ -42,7 +42,7 @@ const SearchCard = (props) => {
 
   return (
     <>
-      <Col xs={12} md={6} lg={3}>
+      <Col xs={12} md={6} lg={4} className="mb-5 g-2">
         <Card>
           <Card.Body className="d-flex justify-content-around">
             <Card.Img className="w-25" variant="top" src={MyIcon} />
