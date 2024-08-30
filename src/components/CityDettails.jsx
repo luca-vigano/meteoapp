@@ -40,7 +40,7 @@ const CityDettails = () => {
       {isLoading ? (
         "Wait.."
       ) : (
-        <Container fluid className="bg-primary m-0">
+        <Container fluid className="bg-primary m-0 h-100">
           <Row>
             <Col>
               <ListGroup>
