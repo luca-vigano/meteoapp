@@ -1,6 +1,8 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import MyNav from "./components/MyNav";
+import MyHero from "./components/MyHero";
+import MyFooter from "./components/MyFooter";
 
 function App() {
   return (
@@ -8,6 +10,12 @@ function App() {
       <header>
         <MyNav />
       </header>
+      <main>
+        <MyHero />
+      </main>
+      <footer>
+        <MyFooter />
+      </footer>
     </>
   );
 }
