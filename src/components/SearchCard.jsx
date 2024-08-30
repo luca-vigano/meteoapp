@@ -1,11 +1,13 @@
 import { Row, Col } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const SearchCard = (props) => {
   const [meteo, setMeteo] = useState({});
   const [MyIcon, setMyIcon] = useState();
   const [temperature, setTemperature] = useState();
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchMeteo();
@@ -43,7 +45,11 @@ const SearchCard = (props) => {
   return (
     <>
       <Col xs={12} md={6} lg={4} className="mb-5 g-2">
-        <Card>
+        <Card
+          onClick={() => {
+            navigate(/details/ + meteo.name);
+          }}
+        >
           <Card.Body className="d-flex justify-content-around">
             <Card.Img className="w-25" variant="top" src={MyIcon} />
             <Card.Title>{meteo.name}</Card.Title>

@@ -3,15 +3,48 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 const CityDettails = () => {
+  const urlParameter = useParams();
+  const [meteo, setMeteo] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    fetchMeteo();
+  }, []);
+
+  const fetchMeteo = () => {
+    fetch(
+      `https://api.openweathermap.org/data/2.5/weather?q=${urlParameter.cityId}&appid=711e8d9b8520830c3819d3f0de2b91a6&units=metric&lang=it`
+    )
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("La chiamata non è andata a buon fine");
+        }
+      })
+      .then((cityMeteo) => {
+        setMeteo(cityMeteo);
+        console.log(cityMeteo);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.log("ERRORE RECUPERO DATI", err);
+      });
+  };
+
   return (
     <>
-      <ListGroup>
-        <ListGroup.Item>Cras justo odio</ListGroup.Item>
-        <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
-        <ListGroup.Item>Morbi leo risus</ListGroup.Item>
-        <ListGroup.Item>Porta ac consectetur ac</ListGroup.Item>
-        <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
-      </ListGroup>
+      {isLoading ? (
+        "Wait.."
+      ) : (
+        <ListGroup>
+          <ListGroup.Item>{meteo.name}</ListGroup.Item>
+          <ListGroup.Item>{meteo.weader[0].description}</ListGroup.Item>
+          <ListGroup.Item>{meteo.main.temp}</ListGroup.Item>
+          <ListGroup.Item>{meteo.main.temp_min}</ListGroup.Item>
+          <ListGroup.Item>{meteo.main.temp_max}</ListGroup.Item>
+        </ListGroup>
+      )}
     </>
   );
 };
