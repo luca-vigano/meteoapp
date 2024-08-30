@@ -9,9 +9,11 @@ const CityDettails = () => {
 
   useEffect(() => {
     fetchMeteo();
-  }, []);
+  }, [urlParameter]);
 
   const fetchMeteo = () => {
+    console.log(urlParameter.cityId);
+
     fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${urlParameter.cityId}&appid=711e8d9b8520830c3819d3f0de2b91a6&units=metric&lang=it`
     )
@@ -23,8 +25,8 @@ const CityDettails = () => {
         }
       })
       .then((cityMeteo) => {
-        setMeteo(cityMeteo);
         console.log(cityMeteo);
+        setMeteo(cityMeteo);
         setIsLoading(false);
       })
       .catch((err) => {
@@ -39,10 +41,10 @@ const CityDettails = () => {
       ) : (
         <ListGroup>
           <ListGroup.Item>{meteo.name}</ListGroup.Item>
-          <ListGroup.Item>{meteo.weader[0].description}</ListGroup.Item>
-          <ListGroup.Item>{meteo.main.temp}</ListGroup.Item>
-          <ListGroup.Item>{meteo.main.temp_min}</ListGroup.Item>
-          <ListGroup.Item>{meteo.main.temp_max}</ListGroup.Item>
+          <ListGroup.Item>{meteo.weather[0].description}</ListGroup.Item>
+          <ListGroup.Item>TEMPERATURA-{meteo.main.temp}</ListGroup.Item>
+          <ListGroup.Item>MIN-{meteo.main.temp_min}</ListGroup.Item>
+          <ListGroup.Item>MAX-{meteo.main.temp_max}</ListGroup.Item>
         </ListGroup>
       )}
     </>
