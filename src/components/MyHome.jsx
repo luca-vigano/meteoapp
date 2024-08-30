@@ -4,7 +4,7 @@ import React from "react";
 import "../App.css";
 import { Container, Row } from "react-bootstrap";
 
-const MyHero = () => {
+const home = () => {
   return (
     <Container
       fluid
@@ -23,4 +23,4 @@ const MyHero = () => {
   );
 };
 
-export default MyHero;
+export default home;

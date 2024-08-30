@@ -1,6 +1,7 @@
 import ListGroup from "react-bootstrap/ListGroup";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Container, Row, Col } from "react-bootstrap";
 
 const CityDettails = () => {
   const urlParameter = useParams();
@@ -39,13 +40,22 @@ const CityDettails = () => {
       {isLoading ? (
         "Wait.."
       ) : (
-        <ListGroup>
-          <ListGroup.Item>{meteo.name}</ListGroup.Item>
-          <ListGroup.Item>{meteo.weather[0].description}</ListGroup.Item>
-          <ListGroup.Item>TEMPERATURA-{meteo.main.temp}</ListGroup.Item>
-          <ListGroup.Item>MIN-{meteo.main.temp_min}</ListGroup.Item>
-          <ListGroup.Item>MAX-{meteo.main.temp_max}</ListGroup.Item>
-        </ListGroup>
+        <Container
+          fluid
+          className="bg-primary m-0 d-flex justify-content-around"
+        >
+          <Row>
+            <Col>
+              <ListGroup>
+                <ListGroup.Item>{meteo.name}</ListGroup.Item>
+                <ListGroup.Item>{meteo.weather[0].description}</ListGroup.Item>
+                <ListGroup.Item>TEMPERATURA-{meteo.main.temp}</ListGroup.Item>
+                <ListGroup.Item>MIN-{meteo.main.temp_min}</ListGroup.Item>
+                <ListGroup.Item>MAX-{meteo.main.temp_max}</ListGroup.Item>
+              </ListGroup>
+            </Col>
+          </Row>
+        </Container>
       )}
     </>
   );
